@@ -21,10 +21,10 @@
  */
 #pragma once
 
-#define CONFIG_EXAMPLES_DIR "BIQU/B1 - SKR 2"
+#define CONFIG_EXAMPLES_DIR "BIQU/B1 - SKR 1.4"
 
 // Enable this option for BLTouch support
-#define B1_USE_BLTOUCH
+//#define B1_USE_BLTOUCH
 
 /**
  * Configuration.h
@@ -93,7 +93,7 @@
 
 // Choose the name from boards.h that matches your setup
 #ifndef MOTHERBOARD
-  #define MOTHERBOARD BOARD_BTT_SKR_V2_0_REV_B
+  #define MOTHERBOARD BOARD_BTT_SKR_V1_4
 #endif
 
 // @section serial
@@ -106,7 +106,7 @@
  *
  * :[-1, 0, 1, 2, 3, 4, 5, 6, 7]
  */
-#define SERIAL_PORT 1
+#define SERIAL_PORT 0
 
 /**
  * Serial Port Baud Rate
@@ -1314,7 +1314,7 @@
 //#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
 
 // Force the use of the probe for Z-axis homing
-#define USE_PROBE_FOR_Z_HOMING
+//#define USE_PROBE_FOR_Z_HOMING
 
 /**
  * Z_MIN_PROBE_PIN
@@ -1606,7 +1606,7 @@
 #define Z_CLEARANCE_MULTI_PROBE     5 // (mm) Z Clearance between multiple probes
 //#define Z_AFTER_PROBING           5 // (mm) Z position after probing is done
 
-#define Z_PROBE_LOW_POINT          -5 // (mm) Farthest distance below the trigger-point to go before stopping
+#define Z_PROBE_LOW_POINT          -2 // (mm) Farthest distance below the trigger-point to go before stopping
 
 // For M851 give a range for adjusting the Z probe offset
 #define Z_PROBE_OFFSET_RANGE_MIN -20
@@ -1921,11 +1921,11 @@
 //#define AUTO_BED_LEVELING_3POINT
 //#define AUTO_BED_LEVELING_LINEAR
 #define AUTO_BED_LEVELING_UBL
-// #ifdef B1_USE_BLTOUCH
-//   #define AUTO_BED_LEVELING_BILINEAR
-// #else
-//   #define MESH_BED_LEVELING
-// #endif
+#ifdef B1_USE_BLTOUCH
+  #define AUTO_BED_LEVELING_BILINEAR
+#else
+  #define MESH_BED_LEVELING
+#endif
 
 /**
  * Commands to execute at the end of G29 probing.
@@ -2140,7 +2140,7 @@
  * - Allows Z homing only when XY positions are known and trusted.
  * - If stepper drivers sleep, XY homing may be required again before Z homing.
  */
-#define Z_SAFE_HOMING
+//#define Z_SAFE_HOMING
 
 #if ENABLED(Z_SAFE_HOMING)
   #define Z_SAFE_HOMING_X_POINT X_CENTER  // (mm) X point for Z homing
