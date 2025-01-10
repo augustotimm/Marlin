@@ -27,7 +27,6 @@
 #include "../shared/Marduino.h"
 #include "../shared/math_32bit.h"
 #include "../shared/HAL_SPI.h"
-#include "temp_soc.h"
 #include "fastio.h"
 #include "Servo.h"
 #include "MarlinSerial.h"
@@ -90,15 +89,15 @@
   #endif
 #endif
 
-#ifdef MMU_SERIAL_PORT
-  #if WITHIN(MMU_SERIAL_PORT, 1, 9)
-    #define MMU_SERIAL MSERIAL(MMU_SERIAL_PORT)
+#ifdef MMU2_SERIAL_PORT
+  #if WITHIN(MMU2_SERIAL_PORT, 1, 9)
+    #define MMU2_SERIAL MSERIAL(MMU2_SERIAL_PORT)
   #elif !defined(USBCON)
-    #error "MMU_SERIAL_PORT must be from 1 to 9."
-  #elif MMU_SERIAL_PORT == -1
-    #define MMU_SERIAL MSerialUSB
+    #error "MMU2_SERIAL_PORT must be from 1 to 9."
+  #elif MMU2_SERIAL_PORT == -1
+    #define MMU2_SERIAL MSerialUSB
   #else
-    #error "MMU_SERIAL_PORT must be from 1 to 9, or -1 for Native USB."
+    #error "MMU2_SERIAL_PORT must be from 1 to 9, or -1 for Native USB."
   #endif
 #endif
 
@@ -112,16 +111,8 @@
   #else
     #error "LCD_SERIAL_PORT must be from 1 to 9, or -1 for Native USB."
   #endif
-  #if ANY(HAS_DGUS_LCD, EXTENSIBLE_UI)
+  #if HAS_DGUS_LCD
     #define LCD_SERIAL_TX_BUFFER_FREE() LCD_SERIAL.availableForWrite()
-  #endif
-#endif
-
-#ifdef RS485_SERIAL_PORT
-  #if WITHIN(RS485_SERIAL_PORT, 1, 9)
-    #define RS485_SERIAL MSERIAL(RS485_SERIAL_PORT)
-  #else
-    #error "RS485_SERIAL_PORT must be from 1 to 9."
   #endif
 #endif
 
