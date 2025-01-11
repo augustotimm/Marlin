@@ -24,7 +24,7 @@
 #define CONFIG_EXAMPLES_DIR "BIQU/B1 - SKR 1.4"
 
 // Enable this option for BLTouch support
-//#define B1_USE_BLTOUCH
+#define B1_USE_BLTOUCH
 
 /**
  * Configuration.h
@@ -1522,7 +1522,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { 24, -47, -1.5 }
+#define NOZZLE_TO_PROBE_OFFSET { 24, -47, 0.5 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1922,7 +1922,7 @@
 //#define AUTO_BED_LEVELING_LINEAR
 #define AUTO_BED_LEVELING_UBL
 #ifdef B1_USE_BLTOUCH
-  #define AUTO_BED_LEVELING_BILINEAR
+  //#define AUTO_BED_LEVELING_BILINEAR
 #else
   #define MESH_BED_LEVELING
 #endif
